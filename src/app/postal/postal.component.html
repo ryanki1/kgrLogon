@@ -1,0 +1,64 @@
+<form novalidate
+      [formGroup]="postalForm"
+      ngClass.xs="smartphone-portrait"
+      (ngSubmit)="submitPostal($event)">
+  <fieldset>
+    <mat-form-field appearance="legacy">
+      <input
+        class="line1"
+        matInput
+        type="text"
+        formControlName="line1"
+        placeholder="Line 1">
+      <mat-hint>* This is the first line of your address</mat-hint>
+      <mat-error *ngIf="postalForm.get('line1').hasError('required')">Line 1 is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input
+        class="line2"
+        matInput
+        type="text"
+        formControlName="line2"
+        placeholder="Line 2">
+        <mat-hint>* This is the second line of your address</mat-hint>
+        <mat-error *ngIf="postalForm.get('line2').hasError('required')">Line 2 is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input
+        class="line3"
+        matInput
+        type="text"
+        formControlName="line3"
+        placeholder="Line 3">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input
+        class="city"
+        matInput
+        type="text"
+        formControlName="city"
+        placeholder="City">
+      <mat-hint>*</mat-hint>
+      <mat-error *ngIf="postalForm.get('city').hasError('required')">City is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input
+        class="postcode"
+        matInput
+        type="text"
+        formControlName="postcode"
+        placeholder="Postcode">
+      <mat-hint>*</mat-hint>
+      <mat-error *ngIf="postalForm.get('postcode').hasError('required')">Postcode is required</mat-error>
+      <mat-error *ngIf="this.postalForm.get('postcode').hasError('pattern')">Postcode has format 12345</mat-error>
+    </mat-form-field>
+  </fieldset>
+  <button
+    class="submit"
+    mat-button
+    mat-raised-button
+    color="warn"
+    [disabled]="postalForm.invalid">
+    Submit
+  </button>
+</form>

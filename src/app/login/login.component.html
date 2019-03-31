@@ -1,0 +1,37 @@
+<form [formGroup]="formLogin">
+  <mat-card>
+    <mat-card-header>
+      <h3>Login</h3>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input #username
+               type="text"
+               formControlName="username"
+               matInput
+               placeholder="Username">
+        <mat-hint>*</mat-hint>
+        <mat-error *ngIf="formLogin.get('username').hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="formLogin.get('username').hasError('username')">Herreng as username is a no no I'm afraid!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password"
+               formControlName="password"
+               matInput
+               placeholder="Password">
+        <mat-hint>*</mat-hint>
+        <mat-error *ngIf="formLogin.get('password').hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+      <button
+        mat-button
+        mat-raised-button
+        (click)="onSubmit($event, formLogin)"
+        color="warn"
+        [disabled]="!formLogin.valid">
+        Logon
+      </button>
+    </mat-card-content>
+  </mat-card>
+  <mat-spinner *ngIf="formLogin.pending"></mat-spinner>
+</form>
+

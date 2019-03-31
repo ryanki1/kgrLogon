@@ -1,0 +1,32 @@
+ul {
+  display: grid;
+  height: 100%;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+  text-align: center;
+  grid-template-rows: 15% 70% 15%;
+  grid-template-columns: auto;
+  grid-template-areas: 'header' 'content' 'footer';
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    grid-area: header;
+    background-color: lightcoral;
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .logout {
+      cursor: pointer;
+    }
+  }
+  .body {
+    overflow: auto;
+    grid-area: content;
+  }
+  .footer {
+    grid-area: footer;
+    background-color: lightpink;
+  }
+}
